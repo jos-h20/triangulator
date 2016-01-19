@@ -1,8 +1,8 @@
-var triangle = function(side1, side2, side3) {
-  if((side1 + side2 > side3) && (side2 + side3 > side1) && (side1 + side3 > side2)) { //triangle?
-    if(side1 === side2 && side1 === side3) { //equilateral?
+var triangle = function(a, b, c) {
+  if((a + b > c) && (b + c > a) && (a + c > b)) { //triangle?
+    if(a === b && a === c) { //equilateral?
       return "an equilateral ";
-    } else if((side1 === side2 && side1 !== side3) ||(side2 === side3 && side2 !== side1) || (side1 === side3 && side1 !== side2)) { //isosceles?
+    } else if((a === b && a !== c) ||(b === c && b !== a) || (a === c && a !== b)) { //isosceles?
       return "an isosceles ";
     } else {                      //is scalene
       return "a scalene ";
@@ -23,8 +23,21 @@ $(function() {
 
     $(".triangle").text(result);
 
-
     $("#result").show();
     event.preventDefault();
   });
+});
+
+  $(function() {
+    $("form#isTriangle2").submit(function(event) {
+      var side4 = parseInt($("input#side4").val());
+      var side5 = parseInt($("input#side5").val());
+      var side6 = parseInt($("input#side6").val());
+      var result2 = triangle(side4, side5, side6);
+
+      $(".triangle2").text(result2)
+
+      $("#result2").show();
+      event.preventDefault();
+    });
 });
